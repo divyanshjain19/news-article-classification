@@ -3,8 +3,13 @@ import joblib
 from scipy.sparse import hstack
 import numpy as np
 import re
+
+import nltk
+nltk.download('stopwords')
+
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
+
 
 authors = joblib.load('authors.joblib')
 ohe_year = joblib.load('ohe_year.joblib')
