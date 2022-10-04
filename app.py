@@ -6,6 +6,9 @@ import re
 
 import nltk
 nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+nltk.download('punkt')
 
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
@@ -45,6 +48,8 @@ def clean_authors(author_name):
     Input: author_name (raw)
     Output: author_name (cleaned)
     '''
+    if author_name == 'None of the above':
+        return "NA"
     init_author_name = author_name.lower().split(',')[0].split('and')[0].replace('_', ' ')\
     .replace('"', '').replace("'", '').replace('-', ' ').replace('.', ' ').replace('by ', '').strip()
     final_author_name = " ".join([s.capitalize() for s in init_author_name.split()]) 
